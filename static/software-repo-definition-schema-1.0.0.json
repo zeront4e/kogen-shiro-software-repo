@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Software Repository Definition",
+  "type": "object",
+  "properties": {
+    "softwareRepoDefinitionVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "repoName": { "type": "string" },
+    "repoDescription": { "type": "string" },
+    "repoSoftware": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "developerName": { "type": "string" },
+          "description": { "type": "string" },
+          "iconUrl": { "type": "string", "format": "uri" },
+          "sourceUrl": { "type": "string", "format": "uri" },
+          "latestReleaseVersion": { "type": "string" },
+          "releases": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "version": { "type": "string" },
+                "releaseTimestamp": { "type": "string" },
+                "downloads": {
+                  "type": "object",
+                  "properties": {
+                    "windows": {
+                      "type": "object",
+                      "properties": {
+                        "x86": { "type": "string", "format": "uri" },
+                        "x86-sha512Hash": { "type": "string" },
+                        "x86-64": { "type": "string", "format": "uri" },
+                        "x86-64-sha512Hash": { "type": "string" },
+                        "arm32": { "type": "string", "format": "uri" },
+                        "arm32-sha512Hash": { "type": "string" },
+                        "arm64": { "type": "string", "format": "uri" },
+                        "arm64-sha512Hash": { "type": "string" }
+                      },
+                      "additionalProperties": false
+                    },
+                    "macos": {
+                      "type": "object",
+                      "properties": {
+                        "x86-64": { "type": "string", "format": "uri" },
+                        "x86-64-sha512Hash": { "type": "string" },
+                        "arm64": { "type": "string", "format": "uri" },
+                        "arm64-sha512Hash": { "type": "string" }
+                      },
+                      "additionalProperties": false
+                    },
+                    "unix": {
+                      "type": "object",
+                      "properties": {
+                        "x86": { "type": "string", "format": "uri" },
+                        "x86-sha512Hash": { "type": "string" },
+                        "x86-64": { "type": "string", "format": "uri" },
+                        "x86-64-sha512Hash": { "type": "string" },
+                        "arm32": { "type": "string", "format": "uri" },
+                        "arm32-sha512Hash": { "type": "string" },
+                        "arm64": { "type": "string", "format": "uri" },
+                        "arm64-sha512Hash": { "type": "string" }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": ["version", "releaseTimestamp", "downloads"]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "developerName",
+          "description",
+          "iconUrl",
+          "sourceUrl",
+          "latestReleaseVersion",
+          "releases"
+        ]
+      }
+    }
+  },
+  "required": [
+    "softwareRepoDefinitionVersion",
+    "repoName",
+    "repoDescription",
+    "repoSoftware"
+  ]
+}
