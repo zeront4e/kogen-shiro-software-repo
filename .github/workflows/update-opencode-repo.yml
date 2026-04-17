@@ -21,7 +21,7 @@ jobs:
           node-version: "20"
 
       - name: Run update script
-        run: node static/scripts/node-update-opencode-repo.js
+        run: node static/scripts/update-opencode.js
 
       - name: Commit and push changes
         run: |
