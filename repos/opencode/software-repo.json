@@ -1,0 +1,36 @@
+{
+  "softwareRepoDefinitionVersion": "1.0.0",
+  "repoName": "opencode",
+  "repoDescription": "opencode software repository",
+  "repoSoftware": [
+    {
+      "id": "opencode",
+      "name": "opencode",
+      "developerName": "anomalyco",
+      "description": "Interactive CLI tool",
+      "iconUrl": "",
+      "sourceUrl": "https://github.com/anomalyco/opencode",
+      "latestReleaseVersion": "v1.4.9",
+      "releases": [
+        {
+          "version": "v1.4.9",
+          "releaseTimestamp": "2026-04-17T16:20:14Z",
+          "downloads": {
+            "windows": {
+              "x86-64": "https://github.com/anomalyco/opencode/releases/download/v1.4.9/opencode-windows-x64.zip",
+              "arm64": "https://github.com/anomalyco/opencode/releases/download/v1.4.9/opencode-windows-arm64.zip"
+            },
+            "macos": {
+              "x86-64": "https://github.com/anomalyco/opencode/releases/download/v1.4.9/opencode-darwin-x64.zip",
+              "arm64": "https://github.com/anomalyco/opencode/releases/download/v1.4.9/opencode-darwin-arm64.zip"
+            },
+            "unix": {
+              "x86-64": "https://github.com/anomalyco/opencode/releases/download/v1.4.9/opencode-linux-x64.tar.gz",
+              "arm64": "https://github.com/anomalyco/opencode/releases/download/v1.4.9/opencode-linux-arm64.tar.gz"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
