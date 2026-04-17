@@ -10,7 +10,7 @@
       "description": "Interactive CLI tool",
       "iconUrl": "",
       "sourceUrl": "https://github.com/anomalyco/opencode",
-      "latestReleaseVersion": "v1.4.9",
+      "latestReleaseVersion": "v1.4.10",
       "releases": [
         {
           "version": "v1.4.9",
@@ -27,6 +27,24 @@
             "unix": {
               "x86-64": "https://github.com/anomalyco/opencode/releases/download/v1.4.9/opencode-linux-x64.tar.gz",
               "arm64": "https://github.com/anomalyco/opencode/releases/download/v1.4.9/opencode-linux-arm64.tar.gz"
+            }
+          }
+        },
+        {
+          "version": "v1.4.10",
+          "releaseTimestamp": "2026-04-17T20:13:50Z",
+          "downloads": {
+            "windows": {
+              "x86-64": "https://github.com/anomalyco/opencode/releases/download/v1.4.10/opencode-windows-x64.zip",
+              "arm64": "https://github.com/anomalyco/opencode/releases/download/v1.4.10/opencode-windows-arm64.zip"
+            },
+            "macos": {
+              "x86-64": "https://github.com/anomalyco/opencode/releases/download/v1.4.10/opencode-darwin-x64.zip",
+              "arm64": "https://github.com/anomalyco/opencode/releases/download/v1.4.10/opencode-darwin-arm64.zip"
+            },
+            "unix": {
+              "x86-64": "https://github.com/anomalyco/opencode/releases/download/v1.4.10/opencode-linux-x64.tar.gz",
+              "arm64": "https://github.com/anomalyco/opencode/releases/download/v1.4.10/opencode-linux-arm64.tar.gz"
             }
           }
         }
