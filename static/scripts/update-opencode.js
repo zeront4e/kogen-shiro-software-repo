@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { existsSync, readFileSync, writeFileSync } from "fs";
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from "fs";
 import { get } from "https";
 
 const REPO_URL =
@@ -92,6 +92,12 @@ async function run() {
       });
 
       software.latestReleaseVersion = version;
+
+      // Ensure directory exists before writing
+      const dir = JSON_FILE_PATH.substring(0, JSON_FILE_PATH.lastIndexOf("/"));
+      if (!existsSync(dir)) {
+        mkdirSync(dir, { recursive: true });
+      }
 
       writeFileSync(JSON_FILE_PATH, JSON.stringify(repoData, null, 2));
 
