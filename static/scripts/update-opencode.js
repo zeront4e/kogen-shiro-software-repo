@@ -33,38 +33,56 @@ function getAssetUrl(assets, pattern) {
 async function run() {
   try {
     const release = await fetchLatestRelease();
+
     const version = release.tag_name;
     const timestamp = release.published_at;
     const assets = release.assets;
 
-    const downloads = {
+    const downloads = {};
+
+    const platformConfigs = {
       windows: {
-        "x86-64": getAssetUrl(assets, "opencode-windows-x64.zip"),
-        arm64: getAssetUrl(assets, "opencode-windows-arm64.zip"),
+        "x86-64": "opencode-windows-x64.zip",
+        arm64: "opencode-windows-arm64.zip",
       },
       macos: {
-        "x86-64": getAssetUrl(assets, "opencode-darwin-x64.zip"),
-        arm64: getAssetUrl(assets, "opencode-darwin-arm64.zip"),
+        "x86-64": "opencode-darwin-x64.zip",
+        arm64: "opencode-darwin-arm64.zip",
       },
       unix: {
-        "x86-64": getAssetUrl(assets, "opencode-linux-x64.tar.gz"),
-        arm64: getAssetUrl(assets, "opencode-linux-arm64.tar.gz"),
+        "x86-64": "opencode-linux-x64.tar.gz",
+        arm64: "opencode-linux-arm64.tar.gz",
       },
     };
 
+    for (const [platform, archs] of Object.entries(platformConfigs)) {
+      const platformDownloads = {};
+
+      for (const [arch, pattern] of Object.entries(archs)) {
+        const url = getAssetUrl(assets, pattern);
+
+        if (url) {
+          platformDownloads[arch] = url;
+        }
+      }
+
+      if (Object.keys(platformDownloads).length > 0) {
+        downloads[platform] = platformDownloads;
+      }
+    }
+
     let repoData = {
       softwareRepoDefinitionVersion: "1.0.0",
-      repoName: "opencode",
-      repoDescription: "opencode software repository",
+      repoName: "OpenCode",
+      repoDescription: "OpenCode software repository",
       repoSoftware: [
         {
-          id: "opencode",
-          name: "opencode",
-          developerName: "anomalyco",
-          description: "Interactive CLI tool",
-          iconUrl: "",
+          id: "opencode-cli",
+          name: "OpenCode CLI",
+          developerName: "Anomaly Innovations Inc.",
+          description: "Interactive agentic LLM-CLI tool",
           sourceUrl: "https://github.com/anomalyco/opencode",
-          latestReleaseVersion: version,
+          optionalLatestReleaseVersion: version,
           releases: [],
         },
       ],
@@ -74,7 +92,9 @@ async function run() {
       repoData = JSON.parse(readFileSync(JSON_FILE_PATH, "utf8"));
     }
 
-    const software = repoData.repoSoftware.find((s) => s.id === "opencode");
+    const software = repoData.repoSoftware.find(
+      (tmpSoftware) => tmpSoftware.id === "opencode",
+    );
 
     if (!software) {
       throw new Error("opencode software definition not found.");
@@ -91,12 +111,16 @@ async function run() {
         downloads: downloads,
       });
 
-      software.latestReleaseVersion = version;
+      software.optionalLatestReleaseVersion = version;
 
-      // Ensure directory exists before writing
-      const dir = JSON_FILE_PATH.substring(0, JSON_FILE_PATH.lastIndexOf("/"));
-      if (!existsSync(dir)) {
-        mkdirSync(dir, { recursive: true });
+      // Ensure directory exists before writing.
+      const targetDirectory = JSON_FILE_PATH.substring(
+        0,
+        JSON_FILE_PATH.lastIndexOf("/"),
+      );
+
+      if (!existsSync(targetDirectory)) {
+        mkdirSync(targetDirectory, { recursive: true });
       }
 
       writeFileSync(JSON_FILE_PATH, JSON.stringify(repoData, null, 2));

@@ -14,13 +14,13 @@
       "items": {
         "type": "object",
         "properties": {
-          "id": { "type": "string" },
-          "name": { "type": "string" },
-          "developerName": { "type": "string" },
-          "description": { "type": "string" },
-          "iconUrl": { "type": "string", "format": "uri" },
-          "sourceUrl": { "type": "string", "format": "uri" },
-          "latestReleaseVersion": { "type": "string" },
+          "id": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "developerName": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 },
+          "optionalIconUrl": { "type": "string", "format": "uri" },
+          "sourceUrl": { "type": "string", "format": "uri", "minLength": 1 },
+          "optionalLatestReleaseVersion": { "type": "string" },
           "releases": {
             "type": "array",
             "items": {
@@ -75,20 +75,21 @@
               },
               "required": ["version", "releaseTimestamp", "downloads"]
             }
-          }
+          },
+          "optionalLicense": { "type": "string" },
+          "optionalMetadata": { "type": "string" }
         },
         "required": [
           "id",
           "name",
           "developerName",
           "description",
-          "iconUrl",
           "sourceUrl",
-          "latestReleaseVersion",
           "releases"
         ]
       }
-    }
+    },
+    "metadata": { "type": "string" }
   },
   "required": [
     "softwareRepoDefinitionVersion",
