@@ -3,6 +3,8 @@
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "fs";
 import { get } from "https";
 
+const SOFTWARE_ID = "opencode-cli";
+
 const REPO_URL =
   "https://api.github.com/repos/anomalyco/opencode/releases/latest";
 
@@ -77,7 +79,7 @@ async function run() {
       repoDescription: "OpenCode software repository",
       repoSoftware: [
         {
-          id: "opencode-cli",
+          id: SOFTWARE_ID,
           name: "OpenCode CLI",
           developerName: "Anomaly Innovations Inc.",
           description: "Interactive agentic LLM-CLI tool",
@@ -93,11 +95,11 @@ async function run() {
     }
 
     const software = repoData.repoSoftware.find(
-      (tmpSoftware) => tmpSoftware.id === "opencode",
+      (tmpSoftware) => tmpSoftware.id === SOFTWARE_ID,
     );
 
     if (!software) {
-      throw new Error("opencode software definition not found.");
+      throw new Error("opencode-cli software definition not found.");
     }
 
     const existingRelease = software.releases.find(
