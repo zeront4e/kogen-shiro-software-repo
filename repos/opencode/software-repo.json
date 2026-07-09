@@ -9,7 +9,7 @@
       "developerName": "Anomaly Innovations Inc.",
       "description": "Interactive agentic LLM-CLI tool",
       "sourceUrl": "https://github.com/anomalyco/opencode",
-      "optionalLatestReleaseVersion": "v1.17.17",
+      "optionalLatestReleaseVersion": "v1.17.18",
       "releases": [
         {
           "version": "v1.4.9",
@@ -1214,6 +1214,24 @@
             "unix": {
               "x86-64": "https://github.com/anomalyco/opencode/releases/download/v1.17.17/opencode-linux-x64.tar.gz",
               "arm64": "https://github.com/anomalyco/opencode/releases/download/v1.17.17/opencode-linux-arm64.tar.gz"
+            }
+          }
+        },
+        {
+          "version": "v1.17.18",
+          "releaseTimestamp": "2026-07-09T18:51:45Z",
+          "downloads": {
+            "windows": {
+              "x86-64": "https://github.com/anomalyco/opencode/releases/download/v1.17.18/opencode-windows-x64.zip",
+              "arm64": "https://github.com/anomalyco/opencode/releases/download/v1.17.18/opencode-windows-arm64.zip"
+            },
+            "macos": {
+              "x86-64": "https://github.com/anomalyco/opencode/releases/download/v1.17.18/opencode-darwin-x64.zip",
+              "arm64": "https://github.com/anomalyco/opencode/releases/download/v1.17.18/opencode-darwin-arm64.zip"
+            },
+            "unix": {
+              "x86-64": "https://github.com/anomalyco/opencode/releases/download/v1.17.18/opencode-linux-x64.tar.gz",
+              "arm64": "https://github.com/anomalyco/opencode/releases/download/v1.17.18/opencode-linux-arm64.tar.gz"
             }
           }
         }
